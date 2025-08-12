@@ -32,7 +32,8 @@ public class SecurityConfiguration {
                                             "/auth/refresh",
                                             "/auth/logout",
                                             "/auth/outbound/authentication",
-                                            "/category").permitAll()
+                                            "/category",
+                                            "/product").permitAll()
                                 .anyRequest().authenticated()// Permit all requests
         );
         http.cors(cors -> cors.configurationSource(corsConfigurationSource()));
