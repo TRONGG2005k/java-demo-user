@@ -5,6 +5,7 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import user.demo.enums.OrderStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,7 +22,7 @@ public class Order {
     Long id;
 
     @Column(name = "total_price")
-    Double totalPrice;
+    BigDecimal totalPrice;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)

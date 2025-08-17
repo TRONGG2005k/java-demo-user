@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import user.demo.dto.request.ProductRequest;
+import user.demo.dto.request.ProductUpdateRequest;
 import user.demo.dto.response.ProductResponse;
 import user.demo.entity.Category;
 import user.demo.entity.Product;
@@ -51,12 +52,29 @@ public class ProductService {
         );
     }
 
-    public ProductResponse update(ProductRequest request, Long id, String status) {
+    public ProductResponse update(ProductUpdateRequest request, Long id) {
         Product product = productRepository.findById(id).orElseThrow(
                 ()-> new RuntimeException("product not found")
         );
+
+        Category category = categoryRepository.findById(request.getCategoryId()).orElseThrow(
+                () -> new RuntimeException("category not found")
+        );
+
+        mapper.updateProductFromRequest(request, product);
+        product.setCategory(category);
+        product.setImageUrl(imageFileService.storeFile(request.getImageUrl()));
+
+        productRepository.save(product);
+
         ProductResponse response = mapper.productToProductResponse(product);
-        response.setStatus(status);
+        response.setStatus(request.getStatus());
         return response;
+    }
+
+
+    public String delete (Long id){
+        productRepository.deleteById(id);
+        return "deleted product with" + id;
     }
 }

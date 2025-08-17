@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Builder
@@ -21,7 +23,7 @@ public class Product extends BaseEntity{
 
     String description;
 
-    Double price;
+    BigDecimal price;
 
     @Column(name = "stock_quantity", nullable = false)
     Integer stockQuantity;

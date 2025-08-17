@@ -4,7 +4,8 @@ package user.demo.dto.request;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 import org.springframework.web.multipart.MultipartFile;
-import user.demo.entity.Category;
+
+import java.math.BigDecimal;
 
 @Data
 @Getter
@@ -13,16 +14,18 @@ import user.demo.entity.Category;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ProductRequest {
+public class ProductUpdateRequest {
     String name;
 
     String description;
 
-    Double price;
+    BigDecimal price;
 
     Integer stockQuantity;
 
     MultipartFile imageUrl;
 
     Long categoryId;
+
+    String status;
 }

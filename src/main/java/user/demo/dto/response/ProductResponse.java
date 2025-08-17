@@ -5,19 +5,20 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 import user.demo.entity.Category;
 
+import java.math.BigDecimal;
+
 @Builder
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ProductResponse {
-    Long id;
 
     String name;
 
     String description;
 
-    Double price;
+    BigDecimal price;
 
     Integer stockQuantity;
 
