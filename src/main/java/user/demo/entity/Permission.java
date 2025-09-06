@@ -21,6 +21,6 @@ public class Permission {
     @Column(name = "name", nullable = false)
     String name;
 
-    @Column(name = "description")
+    @Column(name = "description", nullable = true)
     String description;
 }

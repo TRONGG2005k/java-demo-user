@@ -53,7 +53,7 @@ public class UserService {
         return response;
     }
 
-    @PreAuthorize("hasAuthority('ADMIN_READ')")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public List<UserResponse> getAllUser() {
         return userRepository.findAll().stream()
                 .map(user -> {
@@ -115,5 +115,13 @@ public class UserService {
 //        response.setCreatedAt(user.getCreatedAt());
 //        response.setUpdatedAt(user.getUpdatedAt());
         return response;
+    }
+
+    public User getUserFromConText(){
+        return userRepository.findByUserName(
+                SecurityContextHolder.getContext().getAuthentication().getName()
+        ).orElseThrow(
+                () -> new RuntimeException("user not found")
+        );
     }
 }

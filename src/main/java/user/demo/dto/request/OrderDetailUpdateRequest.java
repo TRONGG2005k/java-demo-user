@@ -1,9 +1,8 @@
 package user.demo.dto.request;
 
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.util.List;
 
 @Data
 @Getter
@@ -12,11 +11,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderRequest {
+public class OrderDetailUpdateRequest {
+    Long productId;
 
-    Long userId;
-
-    List<OrderDetailRequest> orderDetail;
-
-    String address;
+    Integer quantity;
 }

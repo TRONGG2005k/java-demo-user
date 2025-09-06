@@ -18,4 +18,6 @@ public class OrderResponse {
     List<OrderDetailResponse> orderDetail;
 
     BigDecimal totalPrice;
+
+    String address;
 }

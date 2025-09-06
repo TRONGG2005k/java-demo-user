@@ -4,6 +4,7 @@ import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import user.demo.entity.Permission;
 import user.demo.entity.Role;
 import user.demo.entity.User;
 import user.demo.repository.RoleRepository;

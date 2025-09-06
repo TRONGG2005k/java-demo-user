@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import user.demo.dto.request.OrderRequest;
 import user.demo.dto.response.OrderResponse;
+import user.demo.entity.Order;
 import user.demo.service.OrderService;
 
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/order")
@@ -29,11 +31,25 @@ public class OrderController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/of-user/{user_id}")
+    @GetMapping("/my")
     public ResponseEntity<List<OrderResponse>> findByUserId(
-            @PathVariable("user_id") Long id
     ) {
-        List<OrderResponse> response = orderService.findByUserId(id);
+        List<OrderResponse> response = orderService.findByUserId();
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/my/{id}")
+    public ResponseEntity<OrderResponse> findMyOrderById(
+            @PathVariable("id") Long id
+    )
+    {
+        return ResponseEntity.ok(orderService.findOrderById(id));
+    }
+
+    @GetMapping("/t/{id}")
+    public ResponseEntity<List<Order>> t (
+            @PathVariable("id") Long id
+    ){
+        return ResponseEntity.ok(orderService.t(id));
     }
 }

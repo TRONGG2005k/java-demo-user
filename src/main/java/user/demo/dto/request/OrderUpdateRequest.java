@@ -2,6 +2,8 @@ package user.demo.dto.request;
 
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import user.demo.entity.OrderDetail;
+import user.demo.enums.OrderStatus;
 
 import java.util.List;
 
@@ -12,11 +14,8 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class OrderRequest {
-
-    Long userId;
-
-    List<OrderDetailRequest> orderDetail;
+public class OrderUpdateRequest {
+    OrderStatus status;
 
     String address;
 }
